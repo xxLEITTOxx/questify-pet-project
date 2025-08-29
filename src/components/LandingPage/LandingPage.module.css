@@ -1,0 +1,59 @@
+.landingPageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    color: #213547;
+}
+
+.landingContent {
+    text-align: left;
+    padding: 2em;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 4em;
+    color: #646cff;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.authSection {
+    margin-top: 2em;
+}
+
+.inputGroup {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.usernameInput {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.8em;
+    font-size: 1.2em;
+    margin-right: 1em;
+    flex-grow: 1;
+}
+
+.goButton {
+    padding: 0.8em 2em;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff6f00;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.goButton:hover {
+    background-color: #e06000;
+}

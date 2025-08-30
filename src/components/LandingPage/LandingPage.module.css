@@ -3,7 +3,6 @@
     position: relative;
     overflow: hidden;
     margin-top: 80px;
-    min-height: 648px;
 }
 
 /* Контент всегда поверх фигур */
@@ -20,14 +19,8 @@
     margin-bottom: 0;
 }
 
-/* Опционально-обертка для фигур (можно не использовать в JSX) */
 .bgStack {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
+    margin-top: 236px;
 }
 
 /* Базовая рамка-«окно» для фигур: показываем только нижнюю полосу */
@@ -137,24 +130,16 @@
     background-color: #e06000;
 }
 
-/* Адаптив */
-@media only screen and (max-width: 767px) {
-    .landingContent {
-        max-width: 281px;
-    }
-}
-
 @media only screen and (min-width: 768px) {
     .landingPageContainer {
         display: flex;
-        justify-content: center;
         align-items: center;
-        margin-top: 0;
-        min-height: 1024px;
+        margin-top: 348px;
     }
 
     .landingContent {
         max-width: 375px;
+        margin-bottom: 291px;
     }
 
     .landingH1 {
@@ -172,14 +157,22 @@
         gap: 32px;
     }
     .bgStack {
-        left: 61%;
-        bottom: 10px;
+        position: absolute;
+        left: 430px;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
     }
 }
 
 @media only screen and (min-width: 1280px) {
+    .landingPageContainer {
+        margin-top: 240px;
+        margin-left: 229px;
+    }
     .landingContent {
-        max-width: 652px;
+        max-width: 645px;
     }
 
     .landingH1 {
@@ -192,7 +185,7 @@
         margin-bottom: 35px;
     }
     .authSection p {
-        font-size: 24px;
+        font-size: 23px;
         line-height: 1.875;
     }
     .authSection {
@@ -201,6 +194,12 @@
         gap: 12px;
     }
     .bgStack {
-        left: 78%;
+        left: 70%;
+    }
+
+    .backgroundShapeGray {
+        width: 707px;
+        height: 470px;
+        transform: translateX(-45%) translateY(110%) rotate(75deg);
     }
 }

@@ -1,59 +1,206 @@
+/* Контейнер секции: режем лишнее, держим фигуры внутри блока */
 .landingPageContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f2f5;
-    color: #213547;
+    position: relative;
+    overflow: hidden;
+    margin-top: 80px;
+    min-height: 648px;
 }
 
+/* Контент всегда поверх фигур */
 .landingContent {
+    position: relative;
+    z-index: 10;
     text-align: left;
-    padding: 2em;
-    max-width: 600px;
+    max-width: 281px;
+    background-color: transparent;
 }
 
-h1 {
-    font-size: 4em;
-    color: #646cff;
+/* Если .inputGroup — последний визуальный блок */
+.inputGroup {
+    margin-bottom: 0;
 }
 
-h2 {
-    font-size: 2em;
-    font-weight: 400;
-    line-height: 1.2;
+/* Опционально-обертка для фигур (можно не использовать в JSX) */
+.bgStack {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Базовая рамка-«окно» для фигур: показываем только нижнюю полосу */
+.backgroundShapeBlue,
+.backgroundShapeGray {
+    border-radius: 10px;
+    position: absolute;
+    width: 408px;
+    height: 312px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Синяя фигура (над серой, но ниже контента) */
+.backgroundShapeBlue {
+    background: rgba(0, 215, 255, 0.25);
+    left: 0;
+    bottom: 0;
+    transform: translateX(-11%) translateY(100%) rotate(75deg);
+    z-index: 1;
+}
+
+/* Серая фигура (самая нижняя) */
+.backgroundShapeGray {
+    background: rgba(185, 195, 200, 0.25);
+    left: 0;
+    bottom: 0;
+    transform: translateX(-20%) translateY(100%) rotate(60deg);
+    z-index: 0;
+}
+
+/* Типографика и UI */
+.landingH1 {
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    color: #00d7ff;
+    margin-bottom: 60px;
+}
+
+.landingH2 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.61;
+    letter-spacing: 0.02em;
+    color: #15395a;
+    margin-bottom: 32px;
 }
 
 .authSection {
-    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.authSection p {
+    font-size: 14px;
+    line-height: 3.21429;
+    letter-spacing: 0.02em;
+    color: #b9c3c8;
 }
 
 .inputGroup {
     display: flex;
     align-items: center;
-    margin-top: 1em;
+    width: 212px;
+    height: 52px;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-right: 12px;
 }
 
 .usernameInput {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 0.8em;
-    font-size: 1.2em;
-    margin-right: 1em;
-    flex-grow: 1;
+    border: none;
+    border-bottom: 1px solid #c2c2c2;
+    padding: 0;
+    font-size: 16px;
+    outline: none;
+    caret-color: #00d7ff;
+    background: transparent;
+}
+.usernameInput:focus {
+    border-bottom: 1px solid #00d7ff;
 }
 
 .goButton {
-    padding: 0.8em 2em;
-    border-radius: 8px;
+    width: 52px;
+    height: 52px;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    color: #fff;
+    border-radius: 50%;
     border: none;
     background-color: #ff6f00;
-    color: white;
-    font-weight: bold;
     cursor: pointer;
+    flex-shrink: 0;
     transition: background-color 0.25s;
 }
-
 .goButton:hover {
     background-color: #e06000;
+}
+
+/* Адаптив */
+@media only screen and (max-width: 767px) {
+    .landingContent {
+        max-width: 281px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .landingPageContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        min-height: 1024px;
+    }
+
+    .landingContent {
+        max-width: 375px;
+    }
+
+    .landingH1 {
+        margin-bottom: 40px;
+        font-size: 20px;
+    }
+    .landingH2 {
+        font-size: 24px;
+        line-height: 1.375;
+        margin-bottom: 40px;
+    }
+    .authSection {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+    .bgStack {
+        left: 61%;
+        bottom: 10px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .landingContent {
+        max-width: 652px;
+    }
+
+    .landingH1 {
+        font-size: 24px;
+        margin-bottom: 80px;
+    }
+    .landingH2 {
+        font-size: 36px;
+        line-height: 1.25;
+        margin-bottom: 35px;
+    }
+    .authSection p {
+        font-size: 24px;
+        line-height: 1.875;
+    }
+    .authSection {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+    .bgStack {
+        left: 78%;
+    }
 }

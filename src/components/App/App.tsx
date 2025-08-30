@@ -1,12 +1,13 @@
-import LandingPage from "../LandingPage/LandingPage";
-import QuestCard from "../QuestCard/QuestCard";
+// import LandingPage from "../LandingPage/LandingPage";
+// import QuestCard from "../QuestCard/QuestCard";
+import QuestDashboard from "../QuestDashboard/QuestDashboard";
 import css from "./App.module.css";
 
 function App() {
   return (
     <div className={css.container}>
       {/* <LandingPage /> */}
-      <QuestCard />
+      <QuestDashboard />
     </div>
   );
 }

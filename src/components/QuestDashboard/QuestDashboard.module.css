@@ -1,0 +1,7 @@
+.QuestDashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+    gap: 32px;
+    background-color: #f2f3f7;
+    margin: 0 auto;
+}

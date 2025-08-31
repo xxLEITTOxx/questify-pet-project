@@ -10,7 +10,7 @@ function AppContent() {
         <div className={css.container}>
             {isLoggedIn ? (
                 <>
-                    <Header userName="John Doe" />
+                    <Header />
                     <QuestDashboard />
                 </>
             ) : (

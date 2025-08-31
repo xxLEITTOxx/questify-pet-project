@@ -9,8 +9,33 @@ export default function LandingPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const validateForm = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            toast.error(
+                "Неправильный формат почты. Пожалуйста, повторите ввод."
+            );
+            return false;
+        }
+
+        if (password.length < 8) {
+            toast.error(
+                "Пароль должен быть не меньше 8 символов. Пожалуйста, повторите ввод."
+            );
+            return false;
+        }
+
+        return true;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
         try {
             // Попытка авторизации
             const loginResponse = await authService.login({ email, password });
@@ -38,6 +63,9 @@ export default function LandingPage() {
 
     return (
         <div className={css.landingPageContainer}>
+            <div className={css.backgroundShapeBlue}></div>
+            <div className={css.backgroundShapeGray}></div>
+
             <div className={css.landingContent}>
                 <h1 className={css.landingH1}>Questify</h1>
                 <h2 className={css.landingH2}>

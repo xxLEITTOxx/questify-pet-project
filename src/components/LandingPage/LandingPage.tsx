@@ -63,9 +63,6 @@ export default function LandingPage() {
 
     return (
         <div className={css.landingPageContainer}>
-            <div className={css.backgroundShapeBlue}></div>
-            <div className={css.backgroundShapeGray}></div>
-
             <div className={css.landingContent}>
                 <h1 className={css.landingH1}>Questify</h1>
                 <h2 className={css.landingH2}>

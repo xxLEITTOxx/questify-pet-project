@@ -182,6 +182,15 @@
 }
 
 @media only screen and (min-width: 1280px) {
+    .mainContentWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1280px; /* Фиксированная ширина контейнера */
+        margin: 0 auto; /* Центрируем контейнер */
+        position: relative; /* Для правильного позиционирования дочерних элементов */
+    }
+
     .landingPageContainer {
         margin-top: 240px;
         margin-left: 229px;

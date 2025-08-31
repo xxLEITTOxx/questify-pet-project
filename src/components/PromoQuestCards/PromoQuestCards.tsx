@@ -36,6 +36,12 @@ export default function PromoQuestCards() {
                                     title={card.title}
                                     level={card.difficulty}
                                     category={card.category}
+                                    style={{
+                                        background: "rgba(255, 255, 255, 0.2)",
+                                        boxShadow:
+                                            "0 4px 30px rgba(0, 0, 0, 0.1)",
+                                        backdropFilter: "blur(6px)",
+                                    }}
                                 />
                             </div>
                         </div>

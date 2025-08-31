@@ -5,6 +5,8 @@ interface QuestCardProps {
     level: string;
     title: string;
     category: string;
+    // Новый проп: стиль для контейнера карточки (локальная переопределяемая настройка)
+    style?: React.CSSProperties;
 }
 
 const CATEGORY_BG: Record<string, string> = {
@@ -22,7 +24,12 @@ const LEVEL_DOT: Record<string, string> = {
     normal: "#24d40c",
 };
 
-export default function QuestCard({ level, title, category }: QuestCardProps) {
+export default function QuestCard({
+    level,
+    title,
+    category,
+    style,
+}: QuestCardProps) {
     const categoryKey = category.toUpperCase();
     const levelKey = level.toLowerCase();
 
@@ -35,7 +42,7 @@ export default function QuestCard({ level, title, category }: QuestCardProps) {
     };
 
     return (
-        <div className={css.cardContainer}>
+        <div className={css.cardContainer} style={style}>
             <div className={css.cardHeader}>
                 <div className={css.cardHeaderSelector}>
                     <div className={css.roundLevelSelector} style={dotStyle} />

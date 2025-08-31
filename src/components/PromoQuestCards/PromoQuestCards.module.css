@@ -11,7 +11,6 @@
 @media only screen and (min-width: 768px) {
     /* Абсолютный wrapper: растягиваемся по контейнеру и обрезаем содержимое */
     .contained {
-        max-height: 978px;
         position: absolute;
         inset: 0; /* top/right/bottom/left: 0 — по рамкам landingPageContainer */
         overflow: hidden; /* ничего не выйдет снизу/сбоку */
@@ -24,11 +23,11 @@
     .diagonalCanvas {
         position: absolute;
         top: 0; /* раньше было top: 0 */
-        right: 100px; /* раньше было right: 240px */
+        right: 75px; /* раньше было right: 240px */
         width: 160vw; /* оставляем как у вас */
         height: 160vh;
         transform-origin: top right;
-        transform: rotate(70deg);
+        transform: rotate(75deg);
     }
 
     .slider :global(.slick-list) {
@@ -55,28 +54,14 @@
         transform: rotate(-90deg); /* компенсируем -30deg холста */
         transform-origin: center;
     }
-
-    .rotate90 {
-        transform: rotate(120deg);
-    } /* -60 + 120 = +60; если хотите ровно 90, задайте угол холста -30 */
 }
 
 @media only screen and (min-width: 1280px) {
-    .carouselWrapper {
-        position: absolute;
-        top: 50px; /* Отступ сверху */
-        left: calc(
-            645px + 50px
-        ); /* Позиционирование относительно .landingContent с отступом */
-        transform: rotate(30deg); /* Наклон карусели */
-        width: 600px;
-        z-index: 5;
-        overflow: hidden;
-        pointer-events: none;
+    .contained {
+        display: block;
     }
 
-    .contained {
-        max-height: 870px;
-        display: block;
+    .diagonalCanvas {
+        right: 100px;
     }
 }

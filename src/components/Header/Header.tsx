@@ -1,4 +1,3 @@
-import React from "react";
 import { GoTrophy } from "react-icons/go";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import css from "./Header.module.css";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import css from "./LandingPage.module.css";
 import toast from "react-hot-toast";
 import { authService } from "../services/authService";
@@ -9,6 +9,51 @@ export default function LandingPage() {
     const { login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    // NEW: refs для вычислений
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+
+    // NEW: css-переменные для позиционирования PromoQuestCards
+    const [promoVars, setPromoVars] = useState<{ top: number; right: number }>({
+        top: 0,
+        right: 0,
+    });
+
+    useLayoutEffect(() => {
+        const update = () => {
+            const w = wrapperRef.current;
+            const c = contentRef.current;
+            if (!w || !c) return;
+            const wr = w.getBoundingClientRect();
+            const cr = c.getBoundingClientRect();
+
+            // Выравниваем верх Promo с верхом landingContent
+            const top = cr.top - wr.top;
+
+            // Отступ справа: от правого края landingContent + 60px до правого края wrapper
+            const right = Math.max(0, wr.right - cr.right - 60);
+
+            setPromoVars({ top, right });
+        };
+
+        update();
+
+        const ro = new ResizeObserver(update);
+        if (wrapperRef.current) ro.observe(wrapperRef.current);
+        if (contentRef.current) ro.observe(contentRef.current);
+        window.addEventListener("resize", update);
+
+        // Когда загрузятся шрифты — метрики могут измениться
+        if ((document as any).fonts?.ready) {
+            (document as any).fonts.ready.then(update).catch(() => {});
+        }
+
+        return () => {
+            ro.disconnect();
+            window.removeEventListener("resize", update);
+        };
+    }, []);
 
     const validateForm = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -63,11 +108,22 @@ export default function LandingPage() {
     };
 
     return (
-        <div className={css.landingWrapper}>
+        <div
+            className={css.landingWrapper}
+            ref={wrapperRef}
+            style={
+                {
+                    // пробрасываем переменные для PromoQuestCards
+                    ["--promo-top" as any]: `${promoVars.top}px`,
+                    ["--promo-right" as any]: `${promoVars.right}px`,
+                } as React.CSSProperties
+            }
+        >
             {/* Полотно под контентом, но внутри рамки с марджинами */}
             <PromoQuestCards />
+
             <div className={css.landingPageContainer}>
-                <div className={css.landingContent}>
+                <div className={css.landingContent} ref={contentRef}>
                     <h1 className={css.landingH1}>Questify</h1>
                     <h2 className={css.landingH2}>
                         Questify will turn your life into a thrilling game full

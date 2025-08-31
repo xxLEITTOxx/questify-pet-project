@@ -1,23 +1,34 @@
-@media (min-width: 1280px) {
+.contained {
+    display: none;
+}
+
+@media (min-width: 768px) and (max-width: 767px) {
+    .contained {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
     /* Абсолютный wrapper: растягиваемся по контейнеру и обрезаем содержимое */
     .contained {
-        max-height: 870px;
+        max-height: 978px;
         position: absolute;
         inset: 0; /* top/right/bottom/left: 0 — по рамкам landingPageContainer */
         overflow: hidden; /* ничего не выйдет снизу/сбоку */
         z-index: 2; /* ниже текста (у него z=10) */
         pointer-events: none;
+        display: block;
     }
 
     /* Диагональный холст: размеры в % от контейнера, без правок в px и без vw/vh */
     .diagonalCanvas {
         position: absolute;
-        top: 0;
-        right: 240px;
-        width: 180%; /* запас по диагонали, но клип внутри .contained */
-        height: 180%;
+        top: var(--promo-top, 0); /* раньше было top: 0 */
+        right: var(--promo-right, 0); /* раньше было right: 240px */
+        width: 160vw; /* оставляем как у вас */
+        height: 160vh;
         transform-origin: top right;
-        transform: rotate(70deg); /* ваш текущий угол */
+        transform: rotate(70deg);
     }
 
     .slider :global(.slick-list) {
@@ -50,8 +61,9 @@
     } /* -60 + 120 = +60; если хотите ровно 90, задайте угол холста -30 */
 }
 
-@media (min-width: 768px) and (max-width: 1279px), (max-width: 767px) {
+@media only screen and (min-width: 1280px) {
     .contained {
-        display: none;
-    } /* опционально выключить на малых */
+        max-height: 870px;
+        display: block;
+    }
 }

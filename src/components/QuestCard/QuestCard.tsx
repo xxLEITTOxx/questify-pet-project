@@ -7,14 +7,38 @@ interface QuestCardProps {
     category: string;
 }
 
+const CATEGORY_BG: Record<string, string> = {
+    STUFF: "#b9c3c8",
+    FAMILY: "#ffe6d3",
+    HEALTH: "#cdf7ff",
+    LEARNING: "#fff6c0",
+    LEISURE: "#f8d2ff",
+    WORK: "#d3f6ce",
+};
+
+const LEVEL_DOT: Record<string, string> = {
+    easy: "#00d7ff",
+    hard: "#db0837",
+    normal: "#24d40c",
+};
+
 export default function QuestCard({ level, title, category }: QuestCardProps) {
+    const categoryKey = category.toUpperCase();
+    const levelKey = level.toLowerCase();
+
+    const cardStyle: React.CSSProperties = {
+        backgroundColor: CATEGORY_BG[categoryKey] ?? "#fff",
+    };
+
+    const dotStyle: React.CSSProperties = {
+        backgroundColor: LEVEL_DOT[levelKey] ?? "#24d40c",
+    };
+
     return (
         <div className={css.cardContainer}>
             <div className={css.cardHeader}>
                 <div className={css.cardHeaderSelector}>
-                    <div
-                        className={`${css.roundLevelSelector} ${css[level]}`}
-                    ></div>
+                    <div className={css.roundLevelSelector} style={dotStyle} />
                     <div className={css.levelTitle}>{level}</div>
                     <MdArrowDropDown />
                 </div>
@@ -27,7 +51,7 @@ export default function QuestCard({ level, title, category }: QuestCardProps) {
                 <input type="text" className={css.cardInput} />
             </div>
             <div className={css.cardBottomContainer}>
-                <div className={css.categorySelector}>
+                <div className={css.categorySelector} style={cardStyle}>
                     <div>{category}</div>
                     <MdArrowDropDown />
                 </div>

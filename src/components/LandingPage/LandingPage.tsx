@@ -3,6 +3,7 @@ import css from "./LandingPage.module.css";
 import toast from "react-hot-toast";
 import { authService } from "../services/authService";
 import { useAuth } from "../context/AuthContext";
+import PromoQuestCards from "../PromoQuestCards/PromoQuestCards";
 
 export default function LandingPage() {
     const { login } = useAuth();
@@ -62,41 +63,50 @@ export default function LandingPage() {
     };
 
     return (
-        <div className={css.landingPageContainer}>
-            <div className={css.landingContent}>
-                <h1 className={css.landingH1}>Questify</h1>
-                <h2 className={css.landingH2}>
-                    Questify will turn your life into a thrilling game full of
-                    amazing quests and exciting challenges.
-                </h2>
-                <div className={css.authSection}>
-                    <p>Choose your name to sign up or log in</p>
-                    <form onSubmit={handleSubmit} className={css.inputGroup}>
-                        <div className={css.inputWrapper}>
-                            <input
-                                type="email"
-                                className={css.usernameInput}
-                                placeholder="Your email..."
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <input
-                                type="password"
-                                className={css.usernameInput}
-                                placeholder="Your password..."
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-                        <button type="submit" className={css.goButton}>
-                            go!
-                        </button>
-                    </form>
+        <div className={css.landingWrapper}>
+            {/* Полотно под контентом, но внутри рамки с марджинами */}
+            <PromoQuestCards />
+            <div className={css.landingPageContainer}>
+                <div className={css.landingContent}>
+                    <h1 className={css.landingH1}>Questify</h1>
+                    <h2 className={css.landingH2}>
+                        Questify will turn your life into a thrilling game full
+                        of amazing quests and exciting challenges.
+                    </h2>
+                    <div className={css.authSection}>
+                        <p>Choose your name to sign up or log in</p>
+                        <form
+                            onSubmit={handleSubmit}
+                            className={css.inputGroup}
+                        >
+                            <div className={css.inputWrapper}>
+                                <input
+                                    type="email"
+                                    className={css.usernameInput}
+                                    placeholder="Your email..."
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                <input
+                                    type="password"
+                                    className={css.usernameInput}
+                                    placeholder="Your password..."
+                                    value={password}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
+                                />
+                            </div>
+                            <button type="submit" className={css.goButton}>
+                                go!
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div className={css.bgStack}>
-                <div className={css.backgroundShapeGray} />
-                <div className={css.backgroundShapeBlue} />
+                <div className={css.bgStack}>
+                    <div className={css.backgroundShapeGray} />
+                    <div className={css.backgroundShapeBlue} />
+                </div>
             </div>
         </div>
     );

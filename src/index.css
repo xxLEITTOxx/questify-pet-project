@@ -1,4 +1,6 @@
 @import "modern-normalize/modern-normalize.css";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 @font-face {
     font-family: "HelveticaNeueCyr";

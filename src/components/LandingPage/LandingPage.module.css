@@ -2,7 +2,10 @@
 .landingPageContainer {
     position: relative;
     overflow: hidden;
-    padding-top: 80px;
+    min-height: 100svh; /* корректная высота на мобильных */
+    box-sizing: border-box; /* чтобы паддинги входили в 100svh */
+    padding-top: clamp(32px, 8svh, 80px);
+    padding-bottom: clamp(24px, 18svh, 236px);
 }
 
 /* Контент всегда поверх фигур */
@@ -17,10 +20,6 @@
 /* Если .inputGroup — последний визуальный блок */
 .inputGroup {
     margin-bottom: 0;
-}
-
-.bgStack {
-    margin-top: 236px;
 }
 
 /* Базовая рамка-«окно» для фигур: показываем только нижнюю полосу */
@@ -149,12 +148,15 @@
     .landingPageContainer {
         display: flex;
         align-items: center;
-        padding-top: 300px;
+        min-height: 100svh;
+        box-sizing: border-box;
+        padding-top: clamp(80px, 28svh, 300px);
+        padding-bottom: 0;
     }
 
     .landingContent {
         max-width: 375px;
-        margin-bottom: 291px;
+        padding-bottom: clamp(24px, 26svh, 291px);
     }
 
     .landingH1 {
@@ -191,7 +193,9 @@
     }
 
     .landingPageContainer {
-        padding-top: 240px;
+        min-height: 100svh;
+        box-sizing: border-box;
+        padding-top: clamp(80px, 20svh, 240px);
         padding-left: 229px;
     }
     .landingContent {
@@ -224,5 +228,17 @@
         width: 707px;
         height: 470px;
         transform: translateX(-45%) translateY(110%) rotate(75deg);
+    }
+}
+
+@media (max-height: 700px) {
+    .landingPageContainer {
+        padding-top: clamp(24px, 6svh, 60px);
+        padding-bottom: clamp(16px, 10svh, 120px);
+    }
+    @media (min-width: 768px) {
+        .landingContent {
+            padding-bottom: clamp(16px, 18svh, 200px);
+        }
     }
 }

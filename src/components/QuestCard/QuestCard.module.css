@@ -50,8 +50,10 @@
     color: #b9c3c8;
 }
 
-.inputContainer {
+.inputContainerDifficulty {
     text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .cardInput {

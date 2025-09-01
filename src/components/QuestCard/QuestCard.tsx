@@ -1,11 +1,15 @@
 import css from "./QuestCard.module.css";
 import { MdOutlineClear, MdOutlineStar, MdArrowDropDown } from "react-icons/md";
+import { useEffect, useState } from "react";
+import type { PromoCard } from "../PromoQuestCards/PromoCardsData";
+
+type Difficulty = PromoCard["difficulty"];
+type Category = PromoCard["category"];
 
 interface QuestCardProps {
-  level: string;
+  level: Difficulty; // используем существующий тип
   title: string;
-  category: string;
-  // Новый проп: стиль для контейнера карточки (локальная переопределяемая настройка)
+  category: Category;
   style?: React.CSSProperties;
 }
 
@@ -18,11 +22,21 @@ const CATEGORY_BG: Record<string, string> = {
   WORK: "#d3f6ce",
 };
 
-const LEVEL_DOT: Record<string, string> = {
-  easy: "#00d7ff",
-  hard: "#db0837",
-  normal: "#24d40c",
+const DOT_BY_DIFF: Record<Difficulty, string> = {
+  Easy: "#00d7ff",
+  Normal: "#24d40c",
+  Hard: "#db0837",
 };
+
+const DIFFICULTIES: Difficulty[] = ["Easy", "Normal", "Hard"];
+const CATEGORIES: Category[] = [
+  "STUFF",
+  "FAMILY",
+  "HEALTH",
+  "LEARNING",
+  "LEISURE",
+  "WORK",
+];
 
 export default function QuestCard({
   level,
@@ -30,24 +44,41 @@ export default function QuestCard({
   category,
   style,
 }: QuestCardProps) {
+  const [localDifficulty, setLocalDifficulty] = useState<Difficulty>(level);
+  const [localCategory, setLocalCategory] = useState<Category>(category);
+  useEffect(() => setLocalCategory(category), [category]);
+  useEffect(() => setLocalDifficulty(level), [level]);
+
   const categoryKey = category.toUpperCase();
-  const levelKey = level.toLowerCase();
 
   const cardStyle: React.CSSProperties = {
     backgroundColor: CATEGORY_BG[categoryKey] ?? "#fff",
   };
 
   const dotStyle: React.CSSProperties = {
-    backgroundColor: LEVEL_DOT[levelKey] ?? "#24d40c",
+    backgroundColor: DOT_BY_DIFF[localDifficulty],
   };
 
   return (
     <div className={css.cardContainer} style={style}>
       <div className={css.cardHeader}>
         <div className={css.cardHeaderSelector}>
-          <div className={css.roundLevelSelector} style={dotStyle} />
-          <div className={css.levelTitle}>{level}</div>
-          <MdArrowDropDown />
+          {/* <div className={css.levelTitle}>{localDifficulty}</div> */}
+          {/* <MdArrowDropDown /> */}
+          {/* DEBUG: локальный селект без проброса */}
+          <select
+            className={css.debugSelect}
+            value={localDifficulty}
+            onChange={(e) => setLocalDifficulty(e.target.value as Difficulty)}
+            title="Debug level select"
+          >
+            <div className={css.roundLevelSelector} style={dotStyle}></div>
+            {DIFFICULTIES.map((difficulty) => (
+              <option key={difficulty} value={difficulty}>
+                {difficulty}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <MdOutlineStar />
@@ -59,8 +90,24 @@ export default function QuestCard({
       </div>
       <div className={css.cardBottomContainer}>
         <div className={css.categorySelector} style={cardStyle}>
-          <div>{category}</div>
-          <MdArrowDropDown />
+          {category}
+          {/* <select
+            className={css.debugSelect}
+            value={localCategory}
+            onChange={(e) => setLocalCategory(e.target.value as Category)}
+            title="Debug category select"
+            style={{
+              backgroundColor: CATEGORY_BG[category.toUpperCase()] || "#fff",
+            }}
+          >
+            <option>{category}</option>
+            {/* {CATEGORIES.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))} */}
+          {/* </select> */}
+          {/* <MdArrowDropDown /> */}
         </div>
         <div className={css.buttonList}>
           <div className={css.clearButton}>

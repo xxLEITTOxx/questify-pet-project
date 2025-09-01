@@ -8,6 +8,7 @@ import { authService } from "../services/authService";
 export default function Header() {
     const { logout, user } = useAuth();
     const userInitial = user?.email?.[0]?.toUpperCase() || "";
+    const userName = (user?.email?.split("@")[0] || userInitial).trim();
 
     const handleLogout = async () => {
         try {
@@ -26,7 +27,7 @@ export default function Header() {
             <div className={css.logo}>Questify</div>
             <div className={css.userInfo}>
                 <div className={css.userAvatar}>{userInitial}</div>
-                <div className={css.userName}>{userInitial}'s Quest Log</div>
+                <div className={css.userName}>{userName}'s Quest Log</div>
             </div>
             <div className={css.actions}>
                 <button className={css.actionButton}>

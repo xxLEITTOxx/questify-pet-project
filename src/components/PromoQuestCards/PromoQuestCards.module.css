@@ -23,7 +23,7 @@
     .diagonalCanvas {
         position: absolute;
         top: 0; /* раньше было top: 0 */
-        right: 75px; /* раньше было right: 240px */
+        right: 100px; /* раньше было right: 240px */
         width: 160vw; /* оставляем как у вас */
         height: 160vh;
         transform-origin: top right;
@@ -62,6 +62,6 @@
     }
 
     .diagonalCanvas {
-        right: 100px;
+        right: 200px;
     }
 }

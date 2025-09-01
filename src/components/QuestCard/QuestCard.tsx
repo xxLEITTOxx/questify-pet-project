@@ -13,8 +13,19 @@ export default function QuestCard() {
     <div className={css.cardContainer}>
       <div className={css.cardHeader}>
         <div className={css.cardHeaderSelector}>
-          <div className={css.roundLevelSelector}></div>
-          <div className={css.levelTitle}>Normal</div>
+          {/* dropdown diffciulty list */}
+
+          {/* <div className={css.levelTitle}>Normal</div> */}
+          <div className={css.inputContainerDifficulty}>
+            {/* <input type="text" className={css.cardInput} /> */}
+            <div className={css.roundLevelSelector}></div>
+            <select className={css.cardDropdown}>
+              <option value="item1">Easy</option>
+              <option value="item2">Normal</option>
+              <option value="item3">Hard</option>
+            </select>
+          </div>
+          {/* do suda */}
           <MdArrowDropDown />
         </div>
         <div>

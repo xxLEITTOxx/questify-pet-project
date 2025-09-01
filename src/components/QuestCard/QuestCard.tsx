@@ -63,6 +63,7 @@ export default function QuestCard({
     <div className={css.cardContainer} style={style}>
       <div className={css.cardHeader}>
         <div className={css.cardHeaderSelector}>
+          <div className={css.roundLevelSelector} style={dotStyle}></div>
           {/* <div className={css.levelTitle}>{localDifficulty}</div> */}
           {/* <MdArrowDropDown /> */}
           {/* DEBUG: локальный селект без проброса */}
@@ -72,7 +73,6 @@ export default function QuestCard({
             onChange={(e) => setLocalDifficulty(e.target.value as Difficulty)}
             title="Debug level select"
           >
-            <div className={css.roundLevelSelector} style={dotStyle}></div>
             {DIFFICULTIES.map((difficulty) => (
               <option key={difficulty} value={difficulty}>
                 {difficulty}
@@ -90,24 +90,20 @@ export default function QuestCard({
       </div>
       <div className={css.cardBottomContainer}>
         <div className={css.categorySelector} style={cardStyle}>
-          {category}
+          <div className={css.categoryTitle}>{category}</div>
           {/* <select
             className={css.debugSelect}
             value={localCategory}
             onChange={(e) => setLocalCategory(e.target.value as Category)}
             title="Debug category select"
-            style={{
-              backgroundColor: CATEGORY_BG[category.toUpperCase()] || "#fff",
-            }}
           >
             <option>{category}</option>
-            {/* {CATEGORIES.map((category) => (
+            {CATEGORIES.map((category) => (
               <option key={category} value={category}>
                 {category}
               </option>
-            ))} */}
-          {/* </select> */}
-          {/* <MdArrowDropDown /> */}
+            ))}
+          </select> */}
         </div>
         <div className={css.buttonList}>
           <div className={css.clearButton}>

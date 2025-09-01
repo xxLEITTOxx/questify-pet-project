@@ -2,7 +2,7 @@
 .landingPageContainer {
     position: relative;
     overflow: hidden;
-    margin-top: 80px;
+    padding-top: 80px;
 }
 
 /* Контент всегда поверх фигур */
@@ -149,7 +149,7 @@
     .landingPageContainer {
         display: flex;
         align-items: center;
-        margin-top: 300px;
+        padding-top: 300px;
     }
 
     .landingContent {
@@ -188,12 +188,11 @@
         align-items: center;
         width: 1280px; /* Фиксированная ширина контейнера */
         margin: 0 auto; /* Центрируем контейнер */
-        position: relative; /* Для правильного позиционирования дочерних элементов */
     }
 
     .landingPageContainer {
-        margin-top: 240px;
-        margin-left: 229px;
+        padding-top: 240px;
+        padding-left: 229px;
     }
     .landingContent {
         max-width: 645px;

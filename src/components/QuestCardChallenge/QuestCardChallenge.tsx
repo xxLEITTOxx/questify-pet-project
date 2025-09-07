@@ -13,10 +13,10 @@ export default function QuestCardChallenge() {
         <div className={css.cardHeaderSelector}>
           <div className={css.roundLevelSelector}></div>
           <div className={css.levelTitle}>Hard</div>
-          <MdArrowDropDown />
+          <MdArrowDropDown color="#00d7ff" />
         </div>
         <div>
-          <GiTrophy />
+          <GiTrophy color="#00d7ff" />
         </div>
       </div>
       <div className={css.challengeHeader}>challenge</div>
@@ -24,7 +24,7 @@ export default function QuestCardChallenge() {
 
       <div className={css.dateContainer}>
         <div className={css.dayTitle}>by Wednesday, 23:00</div>
-        <MdCalendarMonth />
+        <MdCalendarMonth color="#00d7ff" />
       </div>
       <div className={css.cardBottomContainer}>
         <div className={css.categorySelector}>
@@ -32,8 +32,9 @@ export default function QuestCardChallenge() {
         </div>
         <div className={css.buttonList}>
           <div className={css.clearButton}>
-            <MdOutlineClear />
+            <MdOutlineClear color="#db0837" />
           </div>
+          <div className={css.separatorContainer}></div>
           <div className={css.startButton}>START</div>
         </div>
       </div>

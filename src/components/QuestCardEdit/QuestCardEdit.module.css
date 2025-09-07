@@ -83,6 +83,7 @@
     font-size: 14px;
     letter-spacing: 0.02em;
     color: #282828;
+    margin-right: 8px;
 
 }
 
@@ -126,20 +127,12 @@
     justify-content: center;
 }
 
-/* .clearButton::after {
-    content: "";
-    height: 16px;
-    position: absolute;
-    left: 18px;
-    width: 1px;
-    background-color: #ffda4f;
-    border-radius: 2px;
-} */
 
-/* .svgContainerClose,
-.svgContainerSave {
-    position: relative;
-} */
+.svgContainerClose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .svgContainerSave {
     height: 16px;
@@ -148,16 +141,6 @@
     align-items: center;
 }
 
-/* .svgContainerClose::after,
-.svgContainerSave::after {
-    content: "";
-    height: 16px;
-    position: absolute;
-    left: 18px;
-    width: 1px;
-    background-color: #ffda4f;
-    border-radius: 2px;
-} */
 
 
 .startButton {

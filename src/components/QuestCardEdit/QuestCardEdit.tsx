@@ -26,8 +26,8 @@ export default function QuestCardEdit() {
         <input type="text" className={css.cardInput} />
       </div>
       <div className={css.dateContainer}>
-        <div className={css.dayTitle}>Today</div>
-        <MdCalendarMonth />
+        <div className={css.dayTitle}>Today, 10:00</div>
+        <MdCalendarMonth size={14} color={"#00d7ff"} />
       </div>
       <div className={css.cardBottomContainer}>
         <div className={css.categorySelector}>
@@ -35,15 +35,15 @@ export default function QuestCardEdit() {
         </div>
         <div className={css.buttonList}>
           <div className={css.svgContainerSave}>
-            <MdOutlineSave />
+            <MdOutlineSave size={16} color="#00d7ff" />
           </div>
           <div className={css.separator}> </div>
           <div className={css.svgContainerClose}>
-            <MdOutlineClear />
+            <MdOutlineClear size={16} color={"#db0837"} />
           </div>
           <div className={css.separator}> </div>
           <div className={css.svgContainerCheck}>
-            <MdCheck size={20} color={"#00d7ff"} />
+            <MdCheck size={20} color={"#24d40c"} />
           </div>
         </div>
       </div>

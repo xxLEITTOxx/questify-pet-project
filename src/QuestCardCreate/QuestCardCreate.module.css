@@ -119,14 +119,10 @@
     justify-content: center;
 }
 
-.clearButton::after {
-    content: "";
-    height: 16px;
-    position: absolute;
-    left: 18px;
+.separatorContainer {
     width: 1px;
-    background-color: #ffda4f;
-    border-radius: 2px;
+    height: 16px;
+    background-color: #b9c3c8;
 }
 
 .startButton {

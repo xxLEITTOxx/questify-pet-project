@@ -1,5 +1,6 @@
 import css from "./QuestCardCompleted.module.css";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { MdArrowForward } from "react-icons/md";
+import vectorLogo from "../../assets/award.svg";
 
 export default function QuestCardCompleted() {
   return (
@@ -8,11 +9,13 @@ export default function QuestCardCompleted() {
         <div className={css.completedName}>Completed:</div>
         <div className={css.completedQuestName}> Visit the dentist...</div>
       </div>
-      <div className={css.completedImage}></div>
+      <div className={css.completedImage}>
+        <img src={vectorLogo} alt="" width="144" height="124" />
+      </div>
       <div className={css.completedContinue}>
         <div className={css.continueText}>Continue</div>
-        <MdOutlineArrowRightAlt />
-        {/* <div className={css.continueSvg}></div> */}
+        <MdArrowForward color="#00d7ff" width="20" height="20" />
+        <div className={css.continueSvg}></div>
       </div>
     </div>
   );

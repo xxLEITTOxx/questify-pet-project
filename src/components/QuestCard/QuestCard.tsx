@@ -83,6 +83,7 @@ export default function QuestCard({
           <div className={css.clearButton}>
             <MdOutlineClear />
           </div>
+          <div className={css.separatorContainer}></div>
           <div className={css.startButton}>START</div>
         </div>
       </div>

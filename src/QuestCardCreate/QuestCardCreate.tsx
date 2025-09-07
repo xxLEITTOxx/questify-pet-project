@@ -25,7 +25,7 @@ export default function QuestCardCreate() {
       </div>
       <div className={css.dateContainer}>
         <div className={css.dayTitle}>Today</div>
-        <MdCalendarMonth />
+        <MdCalendarMonth color="#00d7ff" />
       </div>
       <div className={css.cardBottomContainer}>
         <div className={css.categorySelector}>
@@ -33,8 +33,9 @@ export default function QuestCardCreate() {
         </div>
         <div className={css.buttonList}>
           <div className={css.clearButton}>
-            <MdOutlineClear />
+            <MdOutlineClear color="#db0837" />
           </div>
+          <div className={css.separatorContainer}></div>
           <div className={css.startButton}>START</div>
         </div>
       </div>

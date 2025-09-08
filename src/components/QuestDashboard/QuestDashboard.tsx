@@ -1,6 +1,6 @@
 // Будет содержать разделы "TODAY","TOMORROW", "DONE"
 
-import QuestCardCreate from "../../QuestCardCreate/QuestCardCreate";
+import QuestCardCreate from "../QuestCardCreate/QuestCardCreate";
 import QuestCardChallenge from "../QuestCardChallenge/QuestCardChallenge";
 import QuestCardCompleted from "../QuestCardCompleted/QuestCardCompleted";
 import QuestCardEdit from "../QuestCardEdit/QuestCardEdit";

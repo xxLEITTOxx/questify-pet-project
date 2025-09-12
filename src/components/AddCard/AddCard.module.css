@@ -1,0 +1,14 @@
+.plusButtonContainer {
+    border-radius: 100%;
+    background-color: #ff851c;
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 0px 8px 0 #ff851c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 28px;
+    bottom: 40px;
+    cursor: pointer;
+}

@@ -1,29 +1,34 @@
 import css from "./QuestCardReady.module.css";
-import {
-  MdOutlineClear,
-  MdOutlineStar,
-  MdArrowDropDown,
-  MdCalendarMonth,
-} from "react-icons/md";
+import { MdOutlineStar } from "react-icons/md";
 
-export default function QuestCardReady() {
+interface QuestCardReadyProps {
+  cardEditStatus: boolean;
+  onClick: () => void;
+}
+
+export default function QuestCardReady({
+  cardEditStatus,
+  onClick,
+}: QuestCardReadyProps) {
+  console.log(cardEditStatus);
+
   return (
-    <div className={css.cardContainer}>
+    <div className={css.cardContainer} onClick={onClick}>
       <div className={css.cardHeader}>
         <div className={css.cardHeaderSelector}>
-          <div className={css.roundLevelSelector}></div>
+          {cardEditStatus && <div className={css.roundLevelSelector}></div>}
           <div className={css.levelTitle}>Hard</div>
-          <MdArrowDropDown />
+          {/* <MdArrowDropDown /> */}
         </div>
         <div>
           <MdOutlineStar />
         </div>
       </div>
-
       <div className={css.cardTitle}>Wake up, dress up, live up</div>
+      <div>{cardEditStatus}</div>
 
       <div className={css.dateContainer}>
-        <div className={css.dayTitle}>Today 6:00</div>
+        <div className={css.dayTitle}>Today, 6:00</div>
       </div>
       <div className={css.cardBottomContainer}>
         <div className={css.categorySelector}>

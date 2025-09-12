@@ -58,7 +58,6 @@ export default function QuestCard({
     const dotStyle: React.CSSProperties = {
         backgroundColor: DOT_BY_DIFF[localDifficulty],
     };
-
     return (
         <div className={css.cardContainer} style={style}>
             <div className={css.cardHeader}>

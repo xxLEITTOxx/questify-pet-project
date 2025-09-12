@@ -1,4 +1,5 @@
 export type PromoCard = {
+
     id: number;
     title: string;
     difficulty: "Easy" | "Normal" | "Hard";

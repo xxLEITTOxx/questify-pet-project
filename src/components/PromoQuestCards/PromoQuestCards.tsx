@@ -4,6 +4,7 @@ import css from "./PromoQuestCards.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { promoCardsData } from "./PromoCardsData";
+import type { CardData } from "../types/card";
 
 export default function PromoQuestCards() {
     const settings = {
@@ -25,27 +26,30 @@ export default function PromoQuestCards() {
     };
 
     return (
-        // Абсолютный wrapper внутри landingPageContainer (родитель уже position: relative; overflow: hidden)
         <div className={css.contained}>
             <div className={css.diagonalCanvas}>
                 <Slider {...settings}>
-                    {promoCardsData.map((card) => (
-                        <div key={card.id} className={css.slide}>
-                            <div className={`${css.slideInner} ${css.upright}`}>
-                                <QuestCard
-                                    title={card.title}
-                                    level={card.difficulty}
-                                    category={card.category}
-                                    style={{
-                                        background: "rgba(255, 255, 255, 0.2)",
-                                        boxShadow:
-                                            "0 4px 30px rgba(0, 0, 0, 0.1)",
-                                        backdropFilter: "blur(6px)",
-                                    }}
-                                />
+                    {promoCardsData.map((card) => {
+                        // Приводим промо-карточку к типу CardData для QuestCard
+                        const cardForDisplay: CardData = {
+                            ...card,
+                            _id: `promo-${card.id}`, // Добавляем временный ID
+                            date: new Date().toISOString().split("T")[0],
+                            time: "12:00",
+                            status: "Incomplete",
+                        };
+
+                        return (
+                            <div key={card.id} className={css.slide}>
+                                <div
+                                    className={`${css.slideInner} ${css.upright}`}
+                                >
+                                    {/* Передаем один проп 'card' */}
+                                    <QuestCard card={cardForDisplay} />
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </Slider>
             </div>
         </div>

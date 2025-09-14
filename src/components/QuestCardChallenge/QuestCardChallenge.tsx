@@ -12,6 +12,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { cardService } from "../services/cardService";
 import toast from "react-hot-toast";
 import { DIFFICULTIES, CATEGORIES, DIFFICULTY_COLORS } from "../data/constants";
+import { useEscapeKey } from "../hooks/useEscapeKey";
 import { formatDisplayDate } from "../utils/dateUtils";
 import { useOnClickOutside } from "../hooks/useOnClickOutside";
 import QuestCardModalDelete from "../QuestCardModalDelete/QuestCardModalDelete";
@@ -44,20 +45,10 @@ export default function QuestCardChallenge({ card }: Props) {
         setIsConfirmingDelete(false);
     });
 
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === "Escape") {
-                setIsEditing(false);
-                setIsConfirmingDelete(false);
-            }
-        };
-        if (isEditing) {
-            document.addEventListener("keydown", handleKeyDown);
-        }
-        return () => {
-            document.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [isEditing]);
+    useEscapeKey(() => {
+        setIsEditing(false);
+        setIsConfirmingDelete(false);
+    }, isEditing || isConfirmingDelete);
 
     const mutationOptions = {
         onSuccess: () => {

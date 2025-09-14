@@ -94,7 +94,6 @@ export default function QuestCardCreate({ closeForm, type }: Props) {
                             className={css.cardInput}
                             placeholder="Title..."
                         />
-                        {/* ИСПОЛЬЗУЕМ CLASSNAME ВМЕСТО STYLE */}
                         <ErrorMessage
                             name="title"
                             component="div"

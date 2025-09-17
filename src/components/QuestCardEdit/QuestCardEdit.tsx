@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./QuestCardEdit.module.css";
 import { MdOutlineClear, MdCheck, MdOutlineSave } from "react-icons/md";
-import { DIFFICULTIES, CATEGORIES } from "../data/constants";
+import { DIFFICULTIES, CATEGORIES, DIFFICULTY_COLORS } from "../data/constants";
 import type { EditCardPayload } from "../types/card";
 
 interface QuestCardEditProps {
@@ -27,10 +27,14 @@ export default function QuestCardEdit({
   isDeleting,
   isCompleting,
 }: QuestCardEditProps) {
+  const dotStyle = {
+    backgroundColor: DIFFICULTY_COLORS[editedCard.difficulty],
+  };
+
   return (
     <>
       <div className={css.cardHeader}>
-        {/* <div className={css.roundLevelSelector} style={dotStyle}></div> */}
+        <div className={css.roundLevelSelector} style={dotStyle}></div>
         <select
           name="difficulty"
           value={editedCard.difficulty}
@@ -82,7 +86,7 @@ export default function QuestCardEdit({
         </select>
         <div className={css.buttonList}>
           <button onClick={onSave} disabled={isSaving}>
-            <MdOutlineSave color="#00d7ff" />
+            <MdOutlineSave color="#00d7ff" className={css.iconSave} />
           </button>
           <div className={css.separator}></div>
           <button onClick={onDelete} disabled={isDeleting}>

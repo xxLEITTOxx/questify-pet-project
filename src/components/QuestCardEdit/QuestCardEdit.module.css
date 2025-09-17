@@ -196,6 +196,12 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     justify-content: space-between;
 }
 
+.iconSave:hover {
+    border: 1px solid red;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .buttonList button {
     background: white;
     color: white;

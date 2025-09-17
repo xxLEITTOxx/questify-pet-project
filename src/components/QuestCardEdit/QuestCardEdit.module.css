@@ -15,7 +15,7 @@
     height: 14px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-left: 20px;
 }
 
@@ -49,9 +49,13 @@
     color: white;
 }
 
+select {
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
 select:hover {
     background: #87c1ff;
-    border-radius: 4px;
     color: #282828;
 
 }
@@ -65,6 +69,7 @@ select:hover {
     text-transform: uppercase;
     text-align: center;
     color: #b9c3c8;
+    margin-left: 20px;
 }
 
 .inputContainerDifficulty {
@@ -107,11 +112,13 @@ select:hover {
 }
 
 input[type="date"] {
+    height: 100%;
 
     border: none;
     border-radius: 4px;
     /* background-color: #f8f8f8; */
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 input[type="date"]:hover,
@@ -140,6 +147,7 @@ input[type="time"] {
     border-radius: 4px;
     /* background-color: #f8f8f8; */
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 input[type="time"]:hover,
@@ -196,8 +204,15 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     justify-content: space-between;
 }
 
+.iconSave {
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
 .iconSave:hover {
-    border: 1px solid red;
+    /* border: 1px solid #00d7ff; */
+
+    background-color: #b9c3c8;
     padding: 0;
     box-sizing: border-box;
 }

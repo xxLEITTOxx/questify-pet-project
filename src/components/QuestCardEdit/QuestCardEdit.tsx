@@ -90,11 +90,11 @@ export default function QuestCardEdit({
           </button>
           <div className={css.separator}></div>
           <button onClick={onDelete} disabled={isDeleting}>
-            <MdOutlineClear color="#db0837" />
+            <MdOutlineClear color="#db0837" className={css.iconSave} />
           </button>
           <div className={css.separator}></div>
           <button onClick={onComplete} disabled={isCompleting}>
-            <MdCheck color="#24d40c" />
+            <MdCheck color="#24d40c" className={css.iconSave} />
           </button>
         </div>
       </div>

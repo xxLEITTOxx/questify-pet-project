@@ -156,7 +156,7 @@ export default function QuestCard({ card }: QuestCardProps) {
               }}
               style={{ cursor: "pointer" }} // Показываем, что она кликабельна
             >
-              <MdOutlineStar color="#00d7ff" />
+              <MdOutlineStar color="#00d7ff" className={css.starIcon} />
             </div>
           </div>
           <div className={css.cardTitle}>{card.title}</div>

@@ -4,13 +4,14 @@ import toast from "react-hot-toast";
 import { cardService } from "../services/cardService";
 import type { CardData, EditCardPayload } from "../types/card";
 import { CATEGORY_COLORS, DIFFICULTY_COLORS } from "../data/constants";
-import { formatDisplayDate } from "../utils/dateUtils";
 import { useOnClickOutside } from "../hooks/useOnClickOutside";
 import { useEscapeKey } from "../hooks/useEscapeKey";
 import QuestCardModalDelete from "../QuestCardModalDelete/QuestCardModalDelete";
 import QuestCardEdit from "../QuestCardEdit/QuestCardEdit";
 import css from "./QuestCard.module.css";
 import { MdOutlineStar } from "react-icons/md";
+import { formatDisplayDate, isQuestDueSoon } from "../utils/dateUtils";
+import { BsFire } from "react-icons/bs";
 
 interface QuestCardProps {
     card: CardData;
@@ -152,7 +153,14 @@ export default function QuestCard({ card }: QuestCardProps) {
                                 {card.difficulty}
                             </div>
                         </div>
-                        <div>
+                        {/* Добавляем onClick на звездочку */}
+                        <div
+                            onClick={(e) => {
+                                e.stopPropagation(); // Чтобы не открылся режим редактирования
+                                completeMutation.mutate(card._id);
+                            }}
+                            style={{ cursor: "pointer" }} // Показываем, что она кликабельна
+                        >
                             <MdOutlineStar />
                         </div>
                     </div>
@@ -161,6 +169,14 @@ export default function QuestCard({ card }: QuestCardProps) {
                         <div className={css.dayTitle}>
                             {formatDisplayDate(card.date)}, {card.time}
                         </div>
+                        {/* Иконка огня, если квест "горит" */}
+                        {isQuestDueSoon(card.date, card.time) && (
+                            <BsFire
+                                color="#ff851c"
+                                style={{ marginLeft: "8px" }}
+                                size="18px"
+                            />
+                        )}
                     </div>
                     <div className={css.cardBottomContainer}>
                         <div className={css.categorySelector} style={cardStyle}>

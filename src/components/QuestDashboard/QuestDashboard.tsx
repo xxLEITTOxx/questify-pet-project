@@ -4,7 +4,7 @@ import { cardService } from "../services/cardService";
 import QuestCard from "../QuestCard/QuestCard";
 import QuestCardCreate from "../QuestCardCreate/QuestCardCreate";
 import QuestCardCompleted from "../QuestCardCompleted/QuestCardCompleted";
-import QuestCardChallenge from "../QuestCardChallenge/QuestCardChallenge"; // Важный импорт
+import QuestCardChallenge from "../QuestCardChallenge/QuestCardChallenge";
 import QuestGroup from "../QuestGroup/QuestGroup";
 import css from "./QuestDashboard.module.css";
 import toast from "react-hot-toast";
@@ -25,6 +25,21 @@ function QuestDashboard({ creationType, onCreationHandled }: DashboardProps) {
         TOMORROW: false,
         DONE: false,
     });
+
+    // --- ДОБАВЛЯЕМ ЛОКАЛЬНЫЙ ТАЙМЕР ---
+    // Это состояние будет обновляться каждую минуту, чтобы принудительно
+    // перерисовать UI и пересчитать логику "горящих" задач.
+    const [, setCurrentTime] = useState(new Date());
+
+    useEffect(() => {
+        // Создаем интервал, который обновляет состояние каждую минуту
+        const timerId = setInterval(() => {
+            setCurrentTime(new Date());
+        }, 60000); // 60 000 мс = 1 минута
+
+        // Очищаем интервал, когда компонент размонтируется
+        return () => clearInterval(timerId);
+    }, []);
 
     useEffect(() => {
         if (creationType) {

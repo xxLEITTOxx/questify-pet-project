@@ -13,9 +13,10 @@ import { cardService } from "../services/cardService";
 import toast from "react-hot-toast";
 import { DIFFICULTIES, CATEGORIES, DIFFICULTY_COLORS } from "../data/constants";
 import { useEscapeKey } from "../hooks/useEscapeKey";
-import { formatDisplayDate } from "../utils/dateUtils";
 import { useOnClickOutside } from "../hooks/useOnClickOutside";
 import QuestCardModalDelete from "../QuestCardModalDelete/QuestCardModalDelete";
+import { formatDisplayDate, isQuestDueSoon } from "../utils/dateUtils";
+import { BsFire } from "react-icons/bs";
 
 interface Props {
     card: CardData;
@@ -160,7 +161,14 @@ export default function QuestCardChallenge({ card }: Props) {
                     )}
                     <MdArrowDropDown color="#00d7ff" />
                 </div>
-                <div>
+                {/* Добавляем onClick на кубок */}
+                <div
+                    onClick={(e) => {
+                        e.stopPropagation(); // Чтобы не открылся режим редактирования
+                        completeMutation.mutate(card._id);
+                    }}
+                    style={{ cursor: "pointer" }} // Показываем, что она кликабельна
+                >
                     <GiTrophy color="#00d7ff" />
                 </div>
             </div>
@@ -201,8 +209,17 @@ export default function QuestCardChallenge({ card }: Props) {
                         />
                     </>
                 ) : (
-                    <div className={css.dayTitle}>
-                        by {formatDisplayDate(card.date)}, {card.time}
+                    <div className={css.dayTitleContainer}>
+                        <div className={css.dayTitle}>
+                            by {formatDisplayDate(card.date)}, {card.time}
+                        </div>
+                        {isQuestDueSoon(card.date, card.time) && (
+                            <BsFire
+                                color="#ff851c"
+                                style={{ marginLeft: "8px" }}
+                                size="18px"
+                            />
+                        )}
                     </div>
                 )}
             </div>

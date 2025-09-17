@@ -46,11 +46,9 @@
 
 .cardTitle {
     font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    font-size: 16px;
     text-align: center;
-    color: #b9c3c8;
+    color: #282828;
 }
 
 .inputContainerDifficulty {
@@ -74,6 +72,18 @@
 .cardInput:focus {
     outline: none;
     caret-color: #00d7ff;
+}
+
+.dateContainer {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #b9c3c8;
 }
 
 .cardBottomContainer {

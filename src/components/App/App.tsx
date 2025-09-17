@@ -17,7 +17,7 @@ function AppContent() {
   };
 
   return (
-    <div>
+    <>
       {isLoggedIn ? (
         <>
           <Header onCreateChallenge={() => setCreationType("Challenge")} />
@@ -37,7 +37,7 @@ function AppContent() {
       ) : (
         <LandingPage />
       )}
-    </div>
+    </>
   );
 }
 

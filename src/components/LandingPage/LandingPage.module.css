@@ -8,7 +8,7 @@
     /* чтобы паддинги входили в 100svh */
     /* padding-top: clamp(32px, 8svh, 80px);
     padding-bottom: clamp(24px, 18svh, 236px); */
-    padding: 0 20px;
+    padding: 80px 20px 0 20px;
     height: 100svh;
 }
 
@@ -247,7 +247,7 @@
     }
 }
 
-@media (max-height: 700px) {
+/* @media (max-height: 700px) {
     .landingPageContainer {
         padding-top: clamp(24px, 6svh, 60px);
         padding-bottom: clamp(16px, 10svh, 120px);
@@ -259,4 +259,4 @@
             margin-left: 32px;
         }
     }
-}
+} */

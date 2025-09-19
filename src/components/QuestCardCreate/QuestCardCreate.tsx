@@ -74,7 +74,6 @@ export default function QuestCardCreate({ closeForm, type }: Props) {
                   </option>
                 ))}
               </Field>
-              <MdArrowDropDown />
             </div>
             {type === "Challenge" && <GiTrophy color="#00d7ff" />}
           </div>
@@ -114,7 +113,7 @@ export default function QuestCardCreate({ closeForm, type }: Props) {
                 onClick={closeForm}
                 className={css.clearButton}
               >
-                <MdOutlineClear color="#db0837" size={16} />
+                <MdOutlineClear color="#db0837" className={css.iconSave} />
               </button>
               <div className={css.separatorContainer}></div>
               <button

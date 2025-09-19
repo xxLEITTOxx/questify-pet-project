@@ -6,11 +6,7 @@ import { cardService } from "../services/cardService";
 import { DIFFICULTIES, CATEGORIES } from "../data/constants";
 import type { CreateCardPayload, CardType } from "../types/card";
 import css from "./QuestCardCreate.module.css";
-import {
-  MdOutlineClear,
-  MdArrowDropDown,
-  MdCalendarMonth,
-} from "react-icons/md";
+import { MdOutlineClear, MdCalendarMonth } from "react-icons/md";
 import { GiTrophy } from "react-icons/gi";
 
 interface Props {

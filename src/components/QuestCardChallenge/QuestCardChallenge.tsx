@@ -1,11 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import css from "./QuestCardChallenge.module.css";
-import {
-  MdOutlineClear,
-  MdCheck,
-  MdOutlineSave,
-  MdArrowDropDown,
-} from "react-icons/md";
+import { MdOutlineClear, MdCheck, MdOutlineSave } from "react-icons/md";
 import { GiTrophy } from "react-icons/gi";
 import type { CardData, EditCardPayload } from "../types/card";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

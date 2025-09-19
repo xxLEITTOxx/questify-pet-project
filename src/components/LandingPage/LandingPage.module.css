@@ -2,14 +2,13 @@
 .landingPageContainer {
     position: relative;
     overflow: hidden;
-    /* min-height: 100svh; */
+    min-height: 100svh;
     /* корректная высота на мобильных */
     box-sizing: border-box;
     /* чтобы паддинги входили в 100svh */
-    /* padding-top: clamp(32px, 8svh, 80px);
-    padding-bottom: clamp(24px, 18svh, 236px); */
-    padding: 0 20px;
-    height: 100svh;
+    padding-top: clamp(32px, 8svh, 80px);
+    padding-bottom: clamp(24px, 18svh, 236px);
+
 }
 
 /* Контент всегда поверх фигур */

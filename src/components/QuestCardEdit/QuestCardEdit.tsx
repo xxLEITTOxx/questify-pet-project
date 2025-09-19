@@ -88,9 +88,11 @@ export default function QuestCardEdit({
           <button onClick={onSave} disabled={isSaving}>
             <MdOutlineSave color="#00d7ff" className={css.iconSave} />
           </button>
+          <div className={css.separator}></div>
           <button onClick={onDelete} disabled={isDeleting}>
             <MdOutlineClear color="#db0837" className={css.iconSave} />
           </button>
+          <div className={css.separator}></div>
           <button onClick={onComplete} disabled={isCompleting}>
             <MdCheck color="#24d40c" className={css.iconSave} />
           </button>
